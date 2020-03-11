@@ -29,37 +29,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.DO
-            IT! = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // DO IT!
+            // button1
             // 
-            this.DO
-            IT!.Location = new System.Drawing.Point(12, 11);
-            this.DO
-            IT!.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.DO
-            IT!.Name = "DO IT!";
-            this.DO
-            IT!.Size = new System.Drawing.Size(74, 42);
-            this.DO
-            IT!.TabIndex = 0;
-            this.DO
-            IT!.Text = "DO IT!";
-            this.DO
-            IT!.UseVisualStyleBackColor = true;
-            this.DO
-            IT!.Click += new System.EventHandler(this.button1_Click);
+            this.button1.Location = new System.Drawing.Point(12, 11);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(74, 42);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "sex";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(106, 10);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(182, 42);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "label1";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 562);
-            this.Controls.Add(this.DO
-            IT!)
-            ;
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.button1);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Form1";
             this.Text = "Form1";
@@ -69,5 +69,6 @@
         #endregion
 
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label1;
     }
 }
