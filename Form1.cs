@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,16 +32,16 @@ namespace second_lab
         private void button1_Click(object sender, EventArgs e)
         {
             OpenFileDialog openDialog = new OpenFileDialog();
+            openDialog.InitialDirectory = Directory.GetCurrentDirectory().Substring(0, Directory.GetCurrentDirectory().IndexOf("bin", StringComparison.Ordinal)) + "For2Lab";
             openDialog.Filter = @"Файлы изображений|*.bmp;*.png;*.jpg";
             if (openDialog.ShowDialog() != DialogResult.OK)
                 return;
-            
             Image first, bmp;
             try
             {
-                first = Image.FromFile(openDialog.InitialDirectory + openDialog.FileName);
-                bmp = Image.FromFile(openDialog.InitialDirectory + openDialog.FileName);
-                path_to_img = openDialog.InitialDirectory + openDialog.FileName;
+                first = Image.FromFile(openDialog.FileName);
+                bmp = Image.FromFile(openDialog.FileName);
+                path_to_img = openDialog.FileName;
             }
             catch (OutOfMemoryException ex)
             {
