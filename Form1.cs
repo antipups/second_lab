@@ -27,6 +27,7 @@ namespace second_lab
             label4.Visible = false;
             label5.Visible = false;
             button2.Visible = false;
+            progressBar1.Visible = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -65,6 +66,7 @@ namespace second_lab
             label4.Visible = true;
             label5.Visible = true;
             button2.Visible = true;
+            progressBar1.Visible = true;
         }
 
         private void pictureBox2_MouseMove(object sender, MouseEventArgs e)
@@ -88,11 +90,15 @@ namespace second_lab
             pictureBox2.Image = Image.FromFile(path_to_img);
             Graphics gr = Graphics.FromImage(pictureBox2.Image);
             Random rnd = new Random();
+            progressBar1.Value = 0;
+            double progress = 0;
             for (int i = 0; i < 500; i++)
             {
                 for (int j = 0; j < 500; j++)
                 {
                     gr.FillRectangle(new SolidBrush(Color.FromArgb(rnd.Next(1, 255) , trackBar1.Value, trackBar3.Value, trackBar2.Value)), i, j, 1, 1);
+                    progress += 0.0004;
+                    progressBar1.Value = (int) Math.Round(progress);
                 }
             }
             gr.Save();
