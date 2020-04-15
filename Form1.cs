@@ -13,10 +13,19 @@ namespace second_lab
 {
     public partial class Form1 : Form
     {
-        private bool click = false;
+        private String path_to_img = "";
         public Form1()
         {
             InitializeComponent();
+            trackBar1.Visible = false;
+            trackBar3.Visible = false;
+            trackBar2.Visible = false;
+            label1.Visible = false;
+            label2.Visible = false;
+            label3.Visible = false;
+            label4.Visible = false;
+            label5.Visible = false;
+            button2.Visible = false;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -31,6 +40,7 @@ namespace second_lab
             {
                 first = Image.FromFile(openDialog.InitialDirectory + openDialog.FileName);
                 bmp = Image.FromFile(openDialog.InitialDirectory + openDialog.FileName);
+                path_to_img = openDialog.InitialDirectory + openDialog.FileName;
             }
             catch (OutOfMemoryException ex)
             {
@@ -44,24 +54,21 @@ namespace second_lab
             pictureBox2.Width = 500;
             pictureBox2.Height = 500;
             pictureBox2.Image = bmp;
-
+            
+            trackBar1.Visible = true;
+            trackBar3.Visible = true;
+            trackBar2.Visible = true;
+            label1.Visible = true;
+            label2.Visible = true;
+            label3.Visible = true;
+            label4.Visible = true;
+            label5.Visible = true;
+            button2.Visible = true;
         }
 
         private void pictureBox2_MouseMove(object sender, MouseEventArgs e)
         {
-            Graphics gr = Graphics.FromImage(pictureBox2.Image);
-            int i = 0;
-            Random rnd = new Random();
-            while (i < 50)
-            {
-                int value = rnd.Next(-25, 25);
-                int value2 = rnd.Next(-25, 25);
-                button1.Text = value.ToString();
-                gr.DrawLine(new Pen(Color.FromArgb(rnd.Next(0, 254), trackBar1.Value, trackBar2.Value, trackBar3.Value), 2), e.X, e.Y, e.X + value, e.Y + value2);
-                i++;
-            }
-            gr.Save();
-            pictureBox2.Refresh();
+            
         }
 
 
@@ -73,6 +80,22 @@ namespace second_lab
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            pictureBox2.Image = Image.FromFile(path_to_img);
+            Graphics gr = Graphics.FromImage(pictureBox2.Image);
+            Random rnd = new Random();
+            for (int i = 0; i < 500; i++)
+            {
+                for (int j = 0; j < 500; j++)
+                {
+                    gr.FillRectangle(new SolidBrush(Color.FromArgb(rnd.Next(1, 255) , trackBar1.Value, trackBar3.Value, trackBar2.Value)), i, j, 1, 1);
+                }
+            }
+            gr.Save();
+            pictureBox2.Refresh();
         }
     }
 }
